@@ -1,5 +1,6 @@
 import type { Component } from "solid-js";
 import ChatOption from "./components/ChatOption";
+import ChatMessage from "./components/ChatMessage";
 
 const App: Component = () => {
   return (
@@ -13,7 +14,14 @@ const App: Component = () => {
           }}
         />
       </section>
-      <main class="grow bg-green-300"> main section</main>
+      <main class="grow bg-green-300">
+        <ChatMessage
+          chatDetails={{
+            message: "message",
+            timestamp: "long ago",
+          }}
+        />
+      </main>
     </div>
   );
 };
