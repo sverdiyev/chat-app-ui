@@ -4,13 +4,12 @@ import ChatOption from "./components/ChatOption";
 const App: Component = () => {
   return (
     <div class="flex">
-      <section class="basis-60 bg-amber-100">
-        side section
+      <section class="flex basis-60 flex-col gap-y-2 bg-amber-100 p-2">
         <ChatOption
           chatDetails={{
+            chatName: "Chat Name",
+            chatLastMessage: "last chat message",
             chatLastTimestamp: "long ago",
-            chatLastMessage: "last message",
-            chatName: "test chat",
           }}
         />
       </section>
