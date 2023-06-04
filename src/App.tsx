@@ -1,18 +1,14 @@
 import type { Component } from 'solid-js';
 
-import logo from './logo.svg';
-import styles from './App.module.css';
-
 const App: Component = () => {
   return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
+    <div class="bg-orange-950">
+      <header class="bg-orange-950">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
-          class={styles.link}
+          class="bg-orange-950"
           href="https://github.com/solidjs/solid"
           target="_blank"
           rel="noopener noreferrer"
