@@ -1,6 +1,7 @@
 import type { Component } from "solid-js";
 import ChatOption from "./components/ChatOption";
 import ChatMessage from "./components/ChatMessage";
+import MessageBox from "./components/MessageBox";
 
 const App: Component = () => {
   return (
@@ -21,6 +22,7 @@ const App: Component = () => {
             timestamp: "long ago",
           }}
         />
+        <MessageBox />
       </main>
     </div>
   );
