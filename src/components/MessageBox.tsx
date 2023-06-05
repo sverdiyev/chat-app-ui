@@ -1,7 +1,8 @@
 import type { Component } from "solid-js";
 import { createSignal, JSX } from "solid-js";
 
-const MessageBox: Component = () => {
+type MessageBoxProps = { socketInstance: WebSocket };
+const MessageBox: Component<MessageBoxProps> = () => {
   const [message, setMessage] = createSignal("");
   const submitHandler: JSX.EventHandlerUnion<HTMLFormElement, SubmitEvent> = (
     e

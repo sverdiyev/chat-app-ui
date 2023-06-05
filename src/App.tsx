@@ -2,8 +2,14 @@ import type { Component } from "solid-js";
 import ChatOption from "./components/ChatOption";
 import ChatMessage from "./components/ChatMessage";
 import MessageBox from "./components/MessageBox";
+import { socket } from "./api/api";
+import { createSignal } from "solid-js";
 
 const App: Component = () => {
+  const [messages, setMessages] = createSignal([""]);
+
+  const socketInstance = socket(setMessages);
+
   return (
     <div class="flex">
       <section class="flex basis-60 flex-col gap-y-2 bg-amber-100 p-2">
@@ -22,7 +28,7 @@ const App: Component = () => {
             timestamp: "long ago",
           }}
         />
-        <MessageBox />
+        <MessageBox socketInstance={socketInstance} />
       </main>
     </div>
   );
