@@ -1,19 +1,18 @@
 import { Setter } from "solid-js";
 
 export const socket = (setMessages: Setter<string[]>) => {
-  // const socket = new WebSocket("wss://ws.coincap.io/trades/binance");
-  const socket = new WebSocket("wss://test");
+  const wsSession = new WebSocket("ws://localhost:8080/chat");
 
-  socket.onopen = function () {
+  wsSession.onopen = function () {
     console.log("[open] Connection established");
   };
 
-  socket.onmessage = function (e) {
+  wsSession.onmessage = function (e) {
     console.log(`[message] Data received from server: ${e.data}`);
     setMessages((previousMessages) => [...previousMessages, ...e.data]);
   };
 
-  socket.onclose = function (e) {
+  wsSession.onclose = function (e) {
     if (e.wasClean) {
       console.log(
         `[close] Connection closed cleanly, code=${e.code} reason=${e.reason}`
@@ -25,9 +24,9 @@ export const socket = (setMessages: Setter<string[]>) => {
     }
   };
 
-  socket.onerror = function () {
-    console.log(`[error]`);
+  wsSession.onerror = function () {
+    // console.log(`[error]`);
   };
 
-  return socket;
+  return wsSession;
 };
