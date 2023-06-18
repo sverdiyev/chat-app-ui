@@ -3,10 +3,11 @@ import ChatOption from "./components/ChatOption";
 import ChatMessage from "./components/ChatMessage";
 import MessageBox from "./components/MessageBox";
 import { socket } from "./api/api";
-import { createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
+import { ChatMessageType } from "./models/ChatMessage";
 
 const App: Component = () => {
-  const [messages, setMessages] = createSignal([""]);
+  const [messages, setMessages] = createSignal<Array<ChatMessageType>>([]);
 
   const socketInstance = socket(setMessages);
 
@@ -22,12 +23,16 @@ const App: Component = () => {
         />
       </section>
       <main class="grow bg-green-300">
-        <ChatMessage
-          chatDetails={{
-            message: "message",
-            timestamp: "long ago",
-          }}
-        />
+        <For each={messages()}>
+          {(msg) => (
+            <ChatMessage
+              chatDetails={{
+                message: msg.messageContent,
+                timestamp: "doesnt matter",
+              }}
+            />
+          )}
+        </For>
         <MessageBox socketInstance={socketInstance} />
       </main>
     </div>
