@@ -1,7 +1,7 @@
-import { Setter } from "solid-js";
+import { SetStoreFunction } from "solid-js/store";
 import { ChatMessageType } from "../models/ChatMessage";
 
-export const socket = (setMessages: Setter<ChatMessageType[]>) => {
+export const socket = (setMessages: SetStoreFunction<ChatMessageType[]>) => {
   const wsSession = new WebSocket("ws://localhost:8080/chat");
 
   wsSession.onopen = function () {
@@ -9,7 +9,7 @@ export const socket = (setMessages: Setter<ChatMessageType[]>) => {
   };
 
   wsSession.onmessage = function (e) {
-    console.log(`[message] Data received from server: ${e.data}`);
+    // console.log(`[message] Data received from server: ${e.data}`);
     setMessages((previousMessages) => {
       return [...previousMessages, JSON.parse(e.data)];
     });

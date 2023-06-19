@@ -9,7 +9,6 @@ const MessageBox: Component<MessageBoxProps> = (props) => {
     e
   ) => {
     e.preventDefault();
-    console.log("-> message", message());
 
     const reqObj: ChatMessageType = {
       userName: "Sasha",

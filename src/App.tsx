@@ -1,13 +1,14 @@
 import type { Component } from "solid-js";
+import { For } from "solid-js";
+import { createStore } from "solid-js/store";
 import ChatOption from "./components/ChatOption";
 import ChatMessage from "./components/ChatMessage";
 import MessageBox from "./components/MessageBox";
 import { socket } from "./api/api";
-import { createSignal, For } from "solid-js";
 import { ChatMessageType } from "./models/ChatMessage";
 
 const App: Component = () => {
-  const [messages, setMessages] = createSignal<Array<ChatMessageType>>([]);
+  const [messages, setMessages] = createStore<Array<ChatMessageType>>([]);
 
   const socketInstance = socket(setMessages);
 
@@ -23,7 +24,7 @@ const App: Component = () => {
         />
       </section>
       <main class="grow bg-green-300">
-        <For each={messages()}>
+        <For each={messages}>
           {(msg) => (
             <ChatMessage
               chatDetails={{
