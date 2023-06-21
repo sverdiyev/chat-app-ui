@@ -13,7 +13,7 @@ const MessageBox: Component<MessageBoxProps> = (props) => {
     const reqObj: ChatMessageType = {
       userName: "Sasha",
       messageContent: message(),
-      time: Date.now(),
+      // time: Date.now(),
     };
 
     props.socketInstance.send(JSON.stringify(reqObj));
