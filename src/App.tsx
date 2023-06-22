@@ -14,6 +14,7 @@ const App: Component = () => {
 
   return (
     <div class="flex">
+      hello aws
       <section class="flex basis-60 flex-col gap-y-2 bg-amber-100 p-2">
         <ChatOption
           chatDetails={{
